@@ -1,0 +1,142 @@
+<?php echo $this->doctype(); ?>
+
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<?php echo $this->headTitle($this->translate('invest').$this->translate('Skeleton Application'))->setSeparator(' - ')->setAutoEscape(false)?>
+
+<?php echo $this->headMeta()->appendName('viewport', 'width=device-width, initial-scale=1.0')?>
+
+<!-- Le styles -->
+<?php
+
+echo $this->headLink ( array (
+		'rel' => 'shortcut icon',
+		'type' => 'image/vnd.microsoft.icon',
+		'href' => $this->basePath () . '/images/favicon.ico' 
+) )
+->prependStylesheet ( $this->basePath () . '/css/bootstrap-responsive.min.css' )
+->prependStylesheet ( $this->basePath () . '/css/bootstrap.min.css' )
+->prependStylesheet ( $this->basePath () . '/css/font-awesome.min.css' )
+->prependStylesheet ( $this->basePath () . '/css/style.css' )
+?>
+
+<!-- Scripts -->
+<?php
+
+echo $this->headScript ()
+->prependFile ( $this->basePath () . '/js/html5.js', 'text/javascript', array (
+		'conditional' => 'lt IE 9' 
+) )
+->prependFile ( $this->basePath () . '/js/bootstrap.min.js' )
+->prependFile ( $this->basePath () . '/js/jquery.min.js' )
+?>
+
+</head>
+<body>
+	<div class="navbar navbar-inverse navbar-fixed-top">
+		<div class="navbar-inner">
+			<div class="container">
+
+				<a class="brand" href="<?php echo $this->url('home') ?>"><?php echo $this->translate('TOA') ?></a>
+
+				<a class="btn btn-navbar" data-toggle="collapse"
+					data-target=".nav-collapse"> <span class="icon-bar"></span> <span
+					class="icon-bar"></span> <span class="icon-bar"></span>
+				</a>
+				
+				<?php IF ($this->userIdentity ()) { ?>
+				<!-- user dropdown starts -->
+				<div class="btn-group pull-right">
+					<a class="btn btn-inverse btn-login dropdown-toggle" data-toggle="dropdown" href="#"> <i
+						class="icon-user"></i><span class="hidden-phone"> <?php echo $this->userDisplayName ();?></span>
+						<span class="caret"></span>
+					</a>
+					<ul class="dropdown-menu">
+						<li><a href="/user">Profile</a></li>
+						<li class="divider"></li>
+						<li><a href="/user/logout">Logout</a></li>
+					</ul>
+				</div>
+				<!-- user dropdown ends -->
+				<?php } else { ?>
+					<div class="btn pull-right btn-inverse btn-login">
+						<a href="/user/login">登录</a>
+					</div>
+				<?php }?>
+				
+				<div class="nav-collapse collapse">
+					<ul class="nav">
+						<li><a href="<?php echo $this->url('home') ?>">首页</a></li>
+						<li><a href="#">人事</a></li>
+						<li><a href="#">销售</a></li>
+						<li><a href="#">线路</a></li>
+						<li><a href="/stock">stock</a></li>
+						<li><a href="/script">script</a></li>
+					</ul>
+				</div>
+				<script type="text/javascript">
+				$(function(){
+					var url = window.location;
+					// Will only work if string in href matches with location
+					$('ul.nav a[href="'+ url +'"]').parent().addClass('active');
+
+					// Will also work for relative and absolute hrefs
+					$('ul.nav a').filter(function() {
+					    return this.href == url;
+					}).parent().addClass('active');
+					
+				})
+				</script>
+				<!--/.nav-collapse -->
+
+			</div>
+		</div>
+	</div>
+	<div class="container">
+
+		<!-- Masthead ================================================== -->
+		<div class="subnav">
+			<ul class="nav nav-pills">
+				<li><a href="#typography">排版</a></li>
+				<li><a href="#code">代码</a></li>
+				<li><a href="#tables">表格</a></li>
+				<li><a href="#forms">表单</a></li>
+				<li><a href="#buttons">按钮</a></li>
+				<li><a href="#icons">图标</a></li>
+			</ul>
+		</div>
+		<script type="text/javascript">
+  		$(document).scroll(function(){
+		    // If has not activated (has no attribute "data-top"
+		    if (!$('.subnav').attr('data-top')) {
+		        // If already fixed, then do nothing
+		        if ($('.subnav').hasClass('subnav-fixed')) return;
+		        // Remember top position
+		        var offset = $('.subnav').offset()
+		        $('.subnav').attr('data-top', offset.top);
+		    }
+	
+		    if ($('.subnav').attr('data-top') - $('.subnav').outerHeight() <= $(this).scrollTop())
+		        $('.subnav').addClass('subnav-fixed');
+		    else
+		        $('.subnav').removeClass('subnav-fixed');
+		});
+  		</script>
+	</div>
+
+	<div class="container">
+		<?php echo $this->content; ?>
+		<hr>
+		<footer>
+			<p>
+				&copy; 2012 by WangHao Ltd.
+				<?php echo $this->translate('All rights reserved.')?>
+			</p>
+		</footer>
+	</div>
+	<!-- /container -->
+	<?php echo $this->inlineScript()?>
+	
+</body>
+</html>
