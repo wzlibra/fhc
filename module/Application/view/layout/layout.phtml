@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<?php echo $this->headTitle($this->translate('invest').$this->translate('Skeleton Application'))->setSeparator(' - ')->setAutoEscape(false)?>
+<?php echo $this->headTitle($this->translate('水果硬糖').$this->translate('(北京)网络科技有限公司'))->setSeparator(' - ')->setAutoEscape(false)?>
 
 <?php echo $this->headMeta()->appendName('viewport', 'width=device-width, initial-scale=1.0')?>
 
@@ -28,17 +28,19 @@ echo $this->headScript ()
 ->prependFile ( $this->basePath () . '/js/html5.js', 'text/javascript', array (
 		'conditional' => 'lt IE 9' 
 ) )
+->prependFile ( $this->basePath () . '/js/application.js' )
+->prependFile ( $this->basePath () . '/js/bootstrap-scrollspy.js' )
 ->prependFile ( $this->basePath () . '/js/bootstrap.min.js' )
 ->prependFile ( $this->basePath () . '/js/jquery.min.js' )
 ?>
-
+	
 </head>
-<body>
-	<div class="navbar navbar-inverse navbar-fixed-top">
+<body data-spy="scroll" data-target=".subnav" data-offset="50">
+	<div class="navbar navbar-fixed-top">
 		<div class="navbar-inner">
 			<div class="container">
 
-				<a class="brand" href="<?php echo $this->url('home') ?>"><?php echo $this->translate('TOA') ?></a>
+				<a class="brand" href="<?php echo $this->url('home') ?>"><?php echo $this->translate('水果硬糖') ?></a>
 
 				<a class="btn btn-navbar" data-toggle="collapse"
 					data-target=".nav-collapse"> <span class="icon-bar"></span> <span
@@ -60,7 +62,7 @@ echo $this->headScript ()
 				</div>
 				<!-- user dropdown ends -->
 				<?php } else { ?>
-					<div class="btn pull-right btn-inverse btn-login">
+					<div class="btn pull-right">
 						<a href="/user/login">登录</a>
 					</div>
 				<?php }?>
@@ -68,61 +70,15 @@ echo $this->headScript ()
 				<div class="nav-collapse collapse">
 					<ul class="nav">
 						<li><a href="<?php echo $this->url('home') ?>">首页</a></li>
-						<li><a href="#">人事</a></li>
-						<li><a href="#">销售</a></li>
-						<li><a href="#">线路</a></li>
-						<li><a href="/stock">stock</a></li>
-						<li><a href="/script">script</a></li>
+						<li><a href="<?php echo $this->url('info') ?>">游戏介绍</a></li>
+						<li><a href="#">游戏截图</a></li>
+						<li><a href="#">帮助客服</a></li>
 					</ul>
 				</div>
-				<script type="text/javascript">
-				$(function(){
-					var url = window.location;
-					// Will only work if string in href matches with location
-					$('ul.nav a[href="'+ url +'"]').parent().addClass('active');
-
-					// Will also work for relative and absolute hrefs
-					$('ul.nav a').filter(function() {
-					    return this.href == url;
-					}).parent().addClass('active');
-					
-				})
-				</script>
 				<!--/.nav-collapse -->
 
 			</div>
 		</div>
-	</div>
-	<div class="container">
-
-		<!-- Masthead ================================================== -->
-		<div class="subnav">
-			<ul class="nav nav-pills">
-				<li><a href="#typography">排版</a></li>
-				<li><a href="#code">代码</a></li>
-				<li><a href="#tables">表格</a></li>
-				<li><a href="#forms">表单</a></li>
-				<li><a href="#buttons">按钮</a></li>
-				<li><a href="#icons">图标</a></li>
-			</ul>
-		</div>
-		<script type="text/javascript">
-  		$(document).scroll(function(){
-		    // If has not activated (has no attribute "data-top"
-		    if (!$('.subnav').attr('data-top')) {
-		        // If already fixed, then do nothing
-		        if ($('.subnav').hasClass('subnav-fixed')) return;
-		        // Remember top position
-		        var offset = $('.subnav').offset()
-		        $('.subnav').attr('data-top', offset.top);
-		    }
-	
-		    if ($('.subnav').attr('data-top') - $('.subnav').outerHeight() <= $(this).scrollTop())
-		        $('.subnav').addClass('subnav-fixed');
-		    else
-		        $('.subnav').removeClass('subnav-fixed');
-		});
-  		</script>
 	</div>
 
 	<div class="container">
@@ -130,11 +86,13 @@ echo $this->headScript ()
 		<hr>
 		<footer>
 			<p>
-				&copy; 2012 by WangHao Ltd.
-				<?php echo $this->translate('All rights reserved.')?>
+				&copy; 2012 水果硬糖(北京)网络科技有限公司   Fruit Hard Candy (Beijing) Network Technology Co., Ltd.
 			</p>
 		</footer>
 	</div>
+	
+	
+	
 	<!-- /container -->
 	<?php echo $this->inlineScript()?>
 	

@@ -20,13 +20,13 @@ return array(
                     ),
                 ),
             ),
-        	'script' => array(
+        	'info' => array(
         			'type' =>'Segment',
         			'options' => array(
-        					'route' => '/script',
+        					'route' => '/info',
         					'defaults' => array(
         							'controller' => 'Application\Controller\Index',
-        							'action' => 'script',
+        							'action' => 'info',
         					),
         			),
         	),

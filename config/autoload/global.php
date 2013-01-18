@@ -15,7 +15,7 @@ return array(
 	
 		'db' => array(
 				'driver' => 'Pdo',
-				'dsn' => 'mysql:dbname=toa;host=localhost',
+				'dsn' => 'mysql:dbname=fhc;host=localhost',
 				'username' => 'root',
 				'password' => '',
 				'driver_options' => array(

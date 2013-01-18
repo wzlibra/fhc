@@ -4,10 +4,9 @@ return array (
 				'Application',
 				'WhBase',
 				'User',
-				'Stock',
 				'Admin',
-				'ZendDeveloperTools',
-				'BjyProfiler',
+				//'ZendDeveloperTools',
+				//'BjyProfiler',
 		),
 		'module_listener_options' => array (
 				'config_glob_paths' => array (

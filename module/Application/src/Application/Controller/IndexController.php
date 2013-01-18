@@ -21,4 +21,7 @@ class IndexController extends AbstractActionController
     public function scriptAction() {
     	
     }
+    public function infoAction() {
+    	
+    }
 }
