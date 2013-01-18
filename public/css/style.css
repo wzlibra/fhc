@@ -183,3 +183,9 @@ hr.soften {
   border: 0;
 }
 
+/* 优惠卡 */
+.youhui {
+	color:#123;
+	width:100px;
+	height:50px;
+}

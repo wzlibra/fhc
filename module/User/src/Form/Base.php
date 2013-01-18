@@ -2,7 +2,6 @@
 
 namespace User\Form;
 
-use Zend\Form\Form;
 use Zend\Form\Element;
 use WhBase\Form\ProvidesEventsForm;
 
@@ -13,65 +12,14 @@ class Base extends ProvidesEventsForm
         parent::__construct();
 
         $this->add(array(
-            'name' => 'username',
+            'name' => 'amount',
             'options' => array(
-                'label' => 'Username',
+                'label' => 'Amount',
             ),
             'attributes' => array(
-                'type' => 'text'
+                'type' => 'int'
             ),
         ));
-
-        $this->add(array(
-            'name' => 'email',
-            'options' => array(
-                'label' => 'Email',
-            ),
-            'attributes' => array(
-                'type' => 'text'
-            ),
-        ));
-
-        $this->add(array(
-            'name' => 'display_name',
-            'options' => array(
-                'label' => 'Display Name',
-            ),
-            'attributes' => array(
-                'type' => 'text'
-            ),
-        ));
-
-        $this->add(array(
-            'name' => 'password',
-            'options' => array(
-                'label' => 'Password',
-            ),
-            'attributes' => array(
-                'type' => 'password'
-            ),
-        ));
-
-        $this->add(array(
-            'name' => 'passwordVerify',
-            'options' => array(
-                'label' => 'Password Verify',
-            ),
-            'attributes' => array(
-                'type' => 'password'
-            ),
-        ));
-
-        if ($this->getRegistrationOptions()->getUseRegistrationFormCaptcha()) {
-            $this->add(array(
-                'name' => 'captcha',
-                'type' => 'Zend\Form\Element\Captcha',
-                'options' => array(
-                    'label' => 'Please type the following text',
-                    'captcha' => $this->getRegistrationOptions()->getFormCaptchaOptions(),
-                ),
-            ));
-        }
 
         $submitElement = new Element\Button('submit');
         $submitElement
@@ -91,10 +39,5 @@ class Base extends ProvidesEventsForm
                 'type' => 'hidden'
             ),
         ));
-
-        // @TODO: Fix this... getValidator() is a protected method.
-        //$csrf = new Element\Csrf('csrf');
-        //$csrf->getValidator()->setTimeout($this->getRegistrationOptions()->getUserFormTimeout());
-        //$this->add($csrf);
     }
 }

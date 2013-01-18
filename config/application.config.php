@@ -5,6 +5,7 @@ return array (
 				'WhBase',
 				'User',
 				'Admin',
+				'Payment',
 				//'ZendDeveloperTools',
 				//'BjyProfiler',
 		),

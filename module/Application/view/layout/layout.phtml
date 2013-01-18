@@ -30,6 +30,8 @@ echo $this->headScript ()
 ) )
 ->prependFile ( $this->basePath () . '/js/application.js' )
 ->prependFile ( $this->basePath () . '/js/bootstrap-scrollspy.js' )
+->prependFile ( $this->basePath () . '/js/bootstrap-tab.js' )
+->prependFile ( $this->basePath () . '/js/bootstrap-button.js' )
 ->prependFile ( $this->basePath () . '/js/bootstrap.min.js' )
 ->prependFile ( $this->basePath () . '/js/jquery.min.js' )
 ?>
@@ -71,8 +73,7 @@ echo $this->headScript ()
 					<ul class="nav">
 						<li><a href="<?php echo $this->url('home') ?>">首页</a></li>
 						<li><a href="<?php echo $this->url('info') ?>">游戏介绍</a></li>
-						<li><a href="#">游戏截图</a></li>
-						<li><a href="#">帮助客服</a></li>
+						<li><a href="<?php echo $this->url('payment')?>">充值</a></li>
 					</ul>
 				</div>
 				<!--/.nav-collapse -->
