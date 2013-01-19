@@ -122,11 +122,8 @@ return array (
 		),
 		'navigation' => array (
 				'admin' => array (
-						'user' => array (
-								'label' => '用户管理',
-								'title' => '用户管理',
-								'route' => 'adminUser',
-						) 
+						'userHeader'=>array('label'=>'用户管理','class'=>'nav-header','route'=>'empty'),
+						'user' => array ('label' => '用户列表','route' => 'adminUser') 
 				) 
 		) 
 );

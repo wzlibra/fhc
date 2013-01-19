@@ -19,8 +19,8 @@ class Module extends AbstractModule implements ServiceProviderInterface {
 				),
 				'factories' => array (
 						'promo_form' => function ($sm) {
-							$form = new Form\PromoBase();
-							$form->setInputFilter(new Form\PromoAddFilter());
+							$form = new Form\PromoAdd();
+							$form->setInputFilter(new Form\PromoInputFilter());
 							return $form;
 						} 
 				) 

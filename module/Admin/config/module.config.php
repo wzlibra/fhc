@@ -21,7 +21,13 @@ return array (
 												'action' => 'index' 
 										) 
 								) 
-						) 
+						),
+						'empty' => array (
+								'type' => 'Zend\Mvc\Router\Http\Literal',
+								'options' => array (
+										'route' => '#',
+								)
+						)
 				) 
 		),
 		

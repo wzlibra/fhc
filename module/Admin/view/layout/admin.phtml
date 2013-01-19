@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-    <?php echo $this->headTitle('Admin - TOA Admin Interface')->setSeparator(' - ')->setAutoEscape(false)?>
+    <?php echo $this->headTitle('Admin - FHC Admin Interface')->setSeparator(' - ')->setAutoEscape(false)?>
 
     <?php echo $this->headMeta()->appendName('viewport', 'width=device-width, initial-scale=1.0')?>
 
@@ -21,17 +21,21 @@ echo $this->headScript ()->prependFile ( '//netdna.bootstrapcdn.com/twitter-boot
 
 <body>
 	
-	<div class="navbar">
+	<div class="navbar navbar-inverse">
 		<div class="navbar-inner">
-			<div class="container">
-				<a class="btn btn-navbar" data-toggle="collapse"
-					data-target=".nav-collapse"> <span class="icon-bar"></span> <span
-					class="icon-bar"></span> <span class="icon-bar"></span>
-				</a> <a class="brand" href="<?php echo $this->url('admin') ?>">TOA
-					Admin</a>
-				<div class="nav-collapse">
-				<a class="btn pull-right" href="<?php echo $this->url("home") ?>">Home</a>
-          </div>
+			<div class="container-fluid">
+				<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"> 
+					<span class="icon-bar"></span> 
+					<span class="icon-bar"></span> 
+					<span class="icon-bar"></span>
+				</a> 
+				<a class="brand" href="<?php echo $this->url('admin') ?>">TOA Admin</a>
+				<div class="nav-collapse collapse">
+					<a class="btn pull-right" href="<?php echo $this->url("home") ?>">Home</a>
+					<ul class="nav">
+		              <li><a href="<?php echo $this->url('home')?>">Home</a></li>
+            		</ul>
+          		</div>
 				<!--/.nav-collapse -->
 			</div>
 		</div>
@@ -39,26 +43,27 @@ echo $this->headScript ()->prependFile ( '//netdna.bootstrapcdn.com/twitter-boot
 
 	<div class="container-fluid">
 
-      <div class="container-fluid">
-		<div class="row-fluid">
-			<div class="span2 well" style="max-width: 340px; padding: 8px 0;">
+      <div class="row-fluid">
+		<div class="span2">
+			<div class="well sidebar-nav">
 				<?php echo $this->navigation ( 'admin_navigation' )
 								->menu ()
 								->setUlClass ( 'nav nav-list' )
 								->setMaxDepth ( 1 );
 				?>
 			</div>
-			<div class="span10">
-				<!--Body content-->
-				<?php echo $this->content; ?>
-			</div>
+		</div>
+		
+		<div class="span10">
+			<!--Body content-->
+			<?php echo $this->content; ?>
 		</div>
 	</div>
 
       <hr>
 
 		<footer>
-			<p>&copy; 2012 by TOA Ltd. All rights reserved.</p>
+			<p>&copy; 2012 水果硬糖(北京)网络科技有限公司   Fruit Hard Candy (Beijing) Network Technology Co., Ltd.</p>
 		</footer>
 
 	</div>

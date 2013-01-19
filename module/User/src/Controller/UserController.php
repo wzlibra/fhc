@@ -3,12 +3,12 @@
 namespace User\Controller;
 
 use Zend\Form\Form;
-use Zend\Mvc\Controller\AbstractActionController;
 use Zend\Stdlib\ResponseInterface as Response;
 use Zend\Stdlib\Parameters;
 use Zend\View\Model\ViewModel;
 use User\Service\User as UserService;
 use User\Options\UserControllerOptionsInterface;
+use WhBase\Mvc\Controller\AbstractActionController;
 
 class UserController extends AbstractActionController
 {

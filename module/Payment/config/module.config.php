@@ -10,7 +10,8 @@ return array (
 		'controllers' => array (
 				'invokables' => array (
 						'PaymentCon' => 'Payment\Controller\IndexController',
-						'PaymentAdmin' => 'Payment\Controller\AdminController' 
+						'PaymentAdmin' => 'Payment\Controller\AdminController',
+						'PromoCon' => 'Payment\Controller\PromoController' 
 				) 
 		),
 		
@@ -41,8 +42,21 @@ return array (
 								'options' => array (
 										'route' => '/admin/promo',
 										'defaults' => array (
-												'controller' => 'PaymentAdmin',
-												'action' => 'promoAdmin' 
+												'controller' => 'PromoCon',
+												'action' => 'list' 
+										) 
+								),
+								'may_terminate' => true,
+								'child_routes' => array (
+										'add' => array (
+												'type' => 'literal',
+												'options' => array (
+														'route' => '/add',
+														'defaults' => array (
+																'controller' => 'PromoCon',
+																'action' => 'add' 
+														) 
+												) 
 										) 
 								) 
 						) 
@@ -51,14 +65,11 @@ return array (
 		
 		'navigation' => array (
 				'admin' => array (
-						'payment' => array (
-								'label' => '充值管理',
-								'route' => 'adminPayment' 
-						),
-						'promo' => array (
-								'label' => '促销管理',
-								'route' => 'adminPromo' 
-						) 
+						'paymentheader' => array('label'=>'充值管理','class'=>'nav-header disabled','route'=>'empty'),
+						'payment' => array ('label' => '充值','route' => 'adminPayment'),
+						'promoHeader' => array('label'=>'促销管理','class'=>'nav-header disabled','route'=>'empty'),
+						'promoList' => array ('label' => '促销列表','route' => 'adminPromo'),
+						'promoAdd' => array('label'=>'创建促销','route'=>'adminPromo/add'),
 				) 
 		),
 		

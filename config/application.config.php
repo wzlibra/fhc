@@ -5,10 +5,9 @@ return array (
 				'WhBase',
 				'User',
 				'Admin',
-				'Payment',
-				//'ZendDeveloperTools',
-				//'BjyProfiler',
-		),
+				'Payment' 
+				// 'ZendDeveloperTools',
+				// 'BjyProfiler',		)		,
 		'module_listener_options' => array (
 				'config_glob_paths' => array (
 						'config/autoload/{,*.}{global,local}.php' 
@@ -17,5 +16,6 @@ return array (
 						'./module',
 						'./vendor' 
 				) 
-		) 
+		),
+		 
 );
