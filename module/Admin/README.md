@@ -1,4 +1,4 @@
-# ZfcAdmin Module for Zend Framework 2
+﻿# ZfcAdmin Module for Zend Framework 2
 
 Version 0.0.1 Created by [Jurian Sluiman](http://juriansluiman.nl/en/) and [Martin Shwalbe](https://github.com/Hounddog)
 
@@ -16,6 +16,10 @@ soon to come
 ## Usage
 
 ### Add own Modules to admin path
+
+注意：后台模块无需要修改参数。
+目标项目添加带admin名称的后台路由。
+目标项目添加名称为admin的导航参数。
 
 When creating your own modules you are required to register these with the zfcadmin path as child_routes
 

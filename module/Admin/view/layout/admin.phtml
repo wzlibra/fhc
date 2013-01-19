@@ -1,57 +1,69 @@
 <?php echo $this->doctype(); ?>
 
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <?php echo $this->headTitle('Admin - TOA Admin Interface')->setSeparator(' - ')->setAutoEscape(false) ?>
+<head>
+<meta charset="utf-8">
+    <?php echo $this->headTitle('Admin - TOA Admin Interface')->setSeparator(' - ')->setAutoEscape(false)?>
 
-    <?php echo $this->headMeta()->appendName('viewport', 'width=device-width, initial-scale=1.0') ?>
+    <?php echo $this->headMeta()->appendName('viewport', 'width=device-width, initial-scale=1.0')?>
 
     <!-- Le styles -->
-    <?php echo $this->headLink()->prependStylesheet('//netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/css/bootstrap-combined.min.css') ?>
+    <?php echo $this->headLink()->prependStylesheet('//netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/css/bootstrap-combined.min.css')?>
 
     <!-- Scripts -->
-    <?php echo $this->headScript()->prependFile('//netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/js/bootstrap.min.js')
-                                  ->prependFile('//code.jquery.com/jquery.min.js')
-                                  ->prependFile('//html5shiv.googlecode.com/svn/trunk/html5.js', 'text/javascript', array('conditional' => 'lt IE 9',)) ?>
+    <?php
+				
+echo $this->headScript ()->prependFile ( '//netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/js/bootstrap.min.js' )->prependFile ( '//code.jquery.com/jquery.min.js' )->prependFile ( '//html5shiv.googlecode.com/svn/trunk/html5.js', 'text/javascript', array (
+						'conditional' => 'lt IE 9' 
+				) )?>
 
   </head>
 
-  <body>
+<body>
+	
+	<div class="navbar">
+		<div class="navbar-inner">
+			<div class="container">
+				<a class="btn btn-navbar" data-toggle="collapse"
+					data-target=".nav-collapse"> <span class="icon-bar"></span> <span
+					class="icon-bar"></span> <span class="icon-bar"></span>
+				</a> <a class="brand" href="<?php echo $this->url('admin') ?>">TOA
+					Admin</a>
+				<div class="nav-collapse">
+				<a class="btn pull-right" href="<?php echo $this->url("home") ?>">Home</a>
+          </div>
+				<!--/.nav-collapse -->
+			</div>
+		</div>
+	</div>
 
-    <div class="navbar">
-      <div class="navbar-inner">
-        <div class="container">
-          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+	<div class="container-fluid">
 
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </a>
-          <a class="brand" href="<?php echo $this->url('admin') ?>">TOA Admin</a>
-          <div class="nav-collapse">
-            <?php echo $this->navigation('admin_navigation')
-                            ->menu()
-                            ->setUlClass('nav')
-                            ->setMaxDepth(0)
-                            ->setRenderInvisible(false)?>
-          </div><!--/.nav-collapse -->
-        </div>
-      </div>
-    </div>
-
-    <div class="container">
-
-      <?php echo $this->content; ?>
+      <div class="container-fluid">
+		<div class="row-fluid">
+			<div class="span2 well" style="max-width: 340px; padding: 8px 0;">
+				<?php echo $this->navigation ( 'admin_navigation' )
+								->menu ()
+								->setUlClass ( 'nav nav-list' )
+								->setMaxDepth ( 1 );
+				?>
+			</div>
+			<div class="span10">
+				<!--Body content-->
+				<?php echo $this->content; ?>
+			</div>
+		</div>
+	</div>
 
       <hr>
 
-      <footer>
-        <p>&copy; 2012 by TOA Ltd. All rights reserved.</p>
-      </footer>
+		<footer>
+			<p>&copy; 2012 by TOA Ltd. All rights reserved.</p>
+		</footer>
 
-    </div> <!-- /container -->
+	</div>
+	<!-- /container -->
 
-  <?php echo $this->inlineScript() ?>
+  <?php echo $this->inlineScript()?>
   </body>
 </html>

@@ -81,7 +81,6 @@ class Module implements
         }
 
         $match = $e->getRouteMatch();
-        
         if (!$match instanceof RouteMatch || 0 !== strpos($match->getMatchedRouteName(), 'admin')) {
             return;
         }
