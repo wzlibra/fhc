@@ -1,0 +1,15 @@
+<ul class="breadcrumb">
+	<li><a href="/admin/promo">促销管理</a> <span class="divider">/</span></li>
+	<li class="active">促销删除</li>
+</ul>
+<div class="container">
+	<div class="well span5">
+		<header>
+			<h4>确认要删除 <?php echo $this->entity->getName();?> 促销方案吗？</h4>
+		</header>
+		<form action="<?php echo $this->url('adminPromo/delete',array('id'=>$this->id))?>" method="post" class='form-horizontal'>
+			<input class='btn btn-success' type="submit" name="submit" value='yes'/>
+			<input class='btn btn-danger' type="submit" name="cancel" value='no' />
+		</form>
+	</div>
+</div>

@@ -5,9 +5,17 @@ return array (
 				'WhBase',
 				'User',
 				'Admin',
-				'Payment' 
-				// 'ZendDeveloperTools',
-				// 'BjyProfiler',		)		,
+				'Payment',
+				'ZendDeveloperTools',
+				'BjyProfiler',		),
+		/*
+		'service_manager' => array(
+				'use_defaults' => true,
+				'factories'    => array(
+						'ServiceListener' => 'WhBase\Mvc\Service\ServiceListenerFactory',
+				),
+		),
+		*/
 		'module_listener_options' => array (
 				'config_glob_paths' => array (
 						'config/autoload/{,*.}{global,local}.php' 

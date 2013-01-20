@@ -1,0 +1,40 @@
+<div class="container">
+	<div class="row">
+		<ul class="breadcrumb">
+			<li><a href="/admin/promo">促销管理</a> <span class="divider">/</span></li>
+			<li class="active">促销列表</li>
+		</ul>
+	</div>
+	<div class="row">
+
+		<table class="table table-striped">
+			<tr>
+				<td>#</td>
+				<td>Name</td>
+				<td>Adapter</td>
+				<td>Currency</td>
+				<td>Gold</td>
+				<td>Off</td>
+				<td>Desc</td>
+				<td></td>
+			</tr>
+	<?php foreach ($this->paginator as $item):?>  
+  		<tr>
+				<td><?php echo $item->id; ?></td>
+				<td><?php echo $item->name; ?></td>
+				<td><?php echo $item->adapter; ?></td>
+				<td><?php echo $item->currency; ?></td>
+				<td><?php echo $item->gold; ?></td>
+				<td><?php echo $item->off; ?></td>
+				<td><?php echo $item->desc; ?></td>
+				<td><a href="/admin/promo/edit/<?php echo $item->id;?>" title="edit"><i
+						class="icon-edit"></i></a> <a
+					href="/admin/promo/delete/<?php echo $item->id;?>" title="delete"><i
+						class="icon-trash"></i></a></td>
+			</tr>  
+	<?php endforeach; ?>  
+	</table>
+
+	<?php echo $this->paginationControl($this->paginator,'Elastic','application/page/control.phtml', array('route' => '/admin/promo/page/')); ?>  
+</div>
+</div>

@@ -1,0 +1,76 @@
+<ul class="breadcrumb">
+			<li><a href="/admin/promo">促销管理</a> <span class="divider">/</span></li>
+			<li class="active">促销编辑</li>
+		</ul>
+<div class="container">
+	<div class="well span5">
+		<?php
+		$form = $this->form;
+		$form->prepare();
+		$form->setAttribute('action',$this->url('adminPromo/edit',array('id'=>$this->id)));
+		$form->setAttribute('method','post');
+		
+		$form->setAttribute('class','form-horizontal');
+		$form->get('submit')->setAttribute('class','btn')->setValue('提交');
+		
+		echo $this->form()->openTag($form);
+		echo $this->formHidden($form->get('id'));
+		?>
+		<div class='control-group'>
+			<label class="control-label" for="inputText">名称</label>
+			<div class='controls'>
+				<?php echo $this->formRow ( $form->get ( 'name' ) ); ?>
+			</div>
+		</div>
+		<div class='control-group'>
+			<label class="control-label" for="inputText">说明</label>
+			<div class='controls'>
+				<?php echo $this->formRow ( $form->get ( 'desc' ) ); ?>
+			</div>
+		</div>
+		<div class='control-group'>
+			<label class="control-label" for="inputText">充值接口</label>
+			<div class='controls'>
+				<?php echo $this->formRow ( $form->get ( 'adapter' ) ); ?>
+			</div>
+		</div>
+		<div class='control-group'>
+			<label class="control-label" for="inputText">充值货币</label>
+			<div class='controls'>
+				<?php echo $this->formRow ( $form->get ( 'currency' ) ); ?>
+			</div>
+		</div>
+		<div class='control-group'>
+			<label class="control-label" for="inputText">促销公式</label>
+			<div class='controls'>
+				<?php echo $this->formRow ( $form->get ( 'formula' ) ); ?>
+				<p>amount表示充值数量,公式如：0<{amount}<=6或 {amount}>20</p>
+			</div>
+		</div>
+		<div class='control-group'>
+			<label class="control-label" for="inputText">每单位转换金币</label>
+			<div class='controls'>
+				<?php echo $this->formRow ( $form->get ( 'gold' ) ); ?>
+			</div>
+		</div>
+		<div class='control-group'>
+			<label class="control-label" for="inputText">货币打折率</label>
+			<div class='controls'>
+				<?php echo $this->formRow ( $form->get ( 'off' ) ); ?>
+				<p>请输入1到100。</p>
+			</div>
+		</div>
+		<div class='control-group'>
+			<div class='controls'>
+				<?php echo $this->formSubmit ( $form->get ( 'submit' ) ); ?>
+			</div>
+		</div>
+
+		<?php echo $this->form()->closeTag()?>
+	</div>
+	
+	<div class='well span4'>
+		<!-- @todo 测试公式完整性  -->
+		输入充值数测试公式
+	</div>
+</div>

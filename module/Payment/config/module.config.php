@@ -1,85 +1,140 @@
 <?php
-return array (
-		'payment' => array (
-				'request_url_path' => '/payment/request',
-				'return_url_path' => '/payment/response',
-				'cancel_url_path' => '/payment/cancel',
-				'paymentSecretKey' => '' 
+return array(
+		'payment'=>array(
+				'paymentSecretKey'=>''
 		),
 		
-		'controllers' => array (
-				'invokables' => array (
-						'PaymentCon' => 'Payment\Controller\IndexController',
-						'PaymentAdmin' => 'Payment\Controller\AdminController',
-						'PromoCon' => 'Payment\Controller\PromoController' 
-				) 
+		'controllers'=>array(
+				'invokables'=>array(
+						'PaymentController'=>'Payment\Controller\IndexController',
+						'AdminController'=>'Payment\Controller\AdminController',
+						'PromoController'=>'Payment\Controller\PromoController'
+				)
 		),
 		
-		'router' => array (
-				'routes' => array (
-						'payment' => array (
-								'type' => 'Zend\Mvc\Router\Http\Literal',
-								'options' => array (
-										'route' => '/payment',
-										'defaults' => array (
-												'controller' => 'PaymentCon',
-												'action' => 'index' 
-										) 
-								) 
+		'service_manager'=>array(
+				'aliases'=>array(
+						'user_zend_db_adapter'=>'Zend\Db\Adapter\Adapter'
+				)
+		),
+		
+		'router'=>array(
+				'routes'=>array(
+						'payment'=>array(
+								'type'=>'Zend\Mvc\Router\Http\Literal',
+								'options'=>array(
+										'route'=>'/payment',
+										'defaults'=>array(
+												'controller'=>'PaymentController',
+												'action'=>'index'
+										)
+								)
 						),
-						'adminPayment' => array (
-								'type' => 'Zend\Mvc\Router\Http\Literal',
-								'options' => array (
-										'route' => '/admin/payment',
-										'defaults' => array (
-												'controller' => 'PaymentAdmin',
-												'action' => 'index' 
-										) 
-								) 
+						'adminPayment'=>array(
+								'type'=>'Zend\Mvc\Router\Http\Literal',
+								'options'=>array(
+										'route'=>'/admin/payment',
+										'defaults'=>array(
+												'controller'=>'AdminController',
+												'action'=>'index'
+										)
+								)
 						),
-						'adminPromo' => array (
-								'type' => 'Literal',
-								'options' => array (
-										'route' => '/admin/promo',
-										'defaults' => array (
-												'controller' => 'PromoCon',
-												'action' => 'list' 
-										) 
+						'adminPromo'=>array(
+								'type'=>'Segment',
+								'options'=>array(
+										'route'=>'/admin/promo[/]',
+										'defaults'=>array(
+												'controller'=>'PromoController',
+												'action'=>'list'
+										)
 								),
-								'may_terminate' => true,
-								'child_routes' => array (
-										'add' => array (
-												'type' => 'literal',
-												'options' => array (
-														'route' => '/add',
-														'defaults' => array (
-																'controller' => 'PromoCon',
-																'action' => 'add' 
-														) 
-												) 
-										) 
-								) 
-						) 
-				) 
+								'may_terminate'=>true,
+								'child_routes'=>array(
+										'add'=>array(
+												'type'=>'Segment',
+												'options'=>array(
+														'route'=>'add[/]',
+														'defaults'=>array(
+																'action'=>'add'
+														)
+												)
+										),
+										'page'=>array(
+												'type'=>'Segment',
+												'options'=>array(
+														'route'=>'page/[:page][/]',
+														'constraints'=>array(
+																'page'=>'[a-zA-Z0-9_-]+'
+														),
+														'defaults'=>array(
+																'action'=>'list'
+														)
+												)
+										),
+										'edit'=>array(
+												'type'=>'Segment',
+												'options'=>array(
+														'route'=>'edit/[:id]',
+														'constraints'=>array(
+																'page'=>'[a-zA-Z0-9_-]+'
+														),
+														'defaults'=>array(
+																'action'=>'edit'
+														)
+												)
+										),
+										'delete'=>array(
+												'type'=>'Segment',
+												'options'=>array(
+														'route'=>'delete/[:id]',
+														'constraints'=>array(
+																'page'=>'[a-zA-Z0-9_-]+'
+														),
+														'defaults'=>array(
+																'action'=>'delete'
+														)
+												)
+										)
+								)
+						)
+				)
 		),
 		
-		'navigation' => array (
-				'admin' => array (
-						'paymentheader' => array('label'=>'充值管理','class'=>'nav-header disabled','route'=>'empty'),
-						'payment' => array ('label' => '充值','route' => 'adminPayment'),
-						'promoHeader' => array('label'=>'促销管理','class'=>'nav-header disabled','route'=>'empty'),
-						'promoList' => array ('label' => '促销列表','route' => 'adminPromo'),
-						'promoAdd' => array('label'=>'创建促销','route'=>'adminPromo/add'),
-				) 
+		'navigation'=>array(
+				'admin'=>array(
+						'paymentheader'=>array(
+								'label'=>'充值管理',
+								'class'=>'nav-header disabled',
+								'route'=>'empty'
+						),
+						'payment'=>array(
+								'label'=>'充值',
+								'route'=>'adminPayment'
+						),
+						'promoHeader'=>array(
+								'label'=>'促销管理',
+								'class'=>'nav-header disabled',
+								'route'=>'empty'
+						),
+						'promoList'=>array(
+								'label'=>'促销列表',
+								'route'=>'adminPromo'
+						),
+						'promoAdd'=>array(
+								'label'=>'创建促销',
+								'route'=>'adminPromo/add'
+						)
+				)
 		),
 		
-		'view_manager' => array (
-				'template_map' => array (
-						'payment/request/index' => __DIR__ . '/../view/request/index.phtml',
-						'payment/response/index' => __DIR__ . '/../view/response/index.phtml' 
+		'view_manager'=>array(
+				'template_map'=>array(
+						'payment/request/index'=>__DIR__ . '/../view/request/index.phtml',
+						'payment/response/index'=>__DIR__ . '/../view/response/index.phtml'
 				),
-				'template_path_stack' => array (
-						'payment' => __DIR__ . '/../view' 
-				) 
-		) 
+				'template_path_stack'=>array(
+						'payment'=>__DIR__ . '/../view'
+				)
+		)
 );
