@@ -30,15 +30,21 @@ echo $this->formHidden ( $form->get ( 'id' ) );
 			</div>
 		</div>
 		<div class='control-group'>
-			<label class="control-label" for="inputText">充值接口</label>
+			<label class="control-label" for="inputSelect">充值接口</label>
 			<div class='controls'>
 				<?php echo $this->formRow ( $form->get ( 'adapter' ) ); ?>
 			</div>
 		</div>
 		<div class='control-group'>
-			<label class="control-label" for="inputText">充值货币</label>
+			<label class="control-label" for="inputSelect">充值货币</label>
 			<div class='controls'>
 				<?php echo $this->formRow ( $form->get ( 'currency' ) ); ?>
+			</div>
+		</div>
+		<div class='control-group'>
+			<label class="control-label" for="inputText">默认充值数量</label>
+			<div class='controls'>
+				<?php echo $this->formRow ( $form->get ( 'amount' ) ); ?>
 			</div>
 		</div>
 		<div class='control-group'>

@@ -62,7 +62,6 @@ class PromoController extends AbstractController {
 		}
 		
 		$entity = $service->getPromoMapper()->findById($id);
-		$form->setHydrator(new ClassMethods());
 		$form->bind($entity);
 		
 		return $this->getView()->setVariable('form', $form)->setVariable('id', $id);

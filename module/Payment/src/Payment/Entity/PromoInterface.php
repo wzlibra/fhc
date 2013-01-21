@@ -18,4 +18,9 @@ interface PromoInterface {
 	public function setName($name);
 	public function getDesc();
 	public function setDesc($desc);
+	public function getAmount();
+	public function setAmount($amount);
+	
+	public function getCurrencyName();
+	public function getOffPercent();
 }

@@ -157,6 +157,7 @@ abstract class AbstractDbMapper extends EventProvider
         $update = $sql->update();
 
         $rowData = $this->entityToArray($entity, $hydrator);
+        
         $update->set($rowData)
             ->where($where);
 

@@ -24,6 +24,10 @@ class PromoInputFilter extends ProvidesEventsInputFilter {
 		$formula->getValidatorChain()->addValidator(new Validator\NotEmpty());
 		$this->add($formula);
 		
+		$amount = new Input('amount');
+		$amount->getValidatorChain()->addValidator(new Validator\NotEmpty());
+		$this->add($amount);
+		
 		$gold = new Input('gold');
 		$gold->getValidatorChain()
 			->addValidator(new Validator\NotEmpty());

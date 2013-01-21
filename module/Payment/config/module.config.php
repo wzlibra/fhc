@@ -21,14 +21,17 @@ return array(
 		'router'=>array(
 				'routes'=>array(
 						'payment'=>array(
-								'type'=>'Zend\Mvc\Router\Http\Literal',
+								'type'=>'Segment',
 								'options'=>array(
-										'route'=>'/payment',
+										'route'=>'/payment[/][:action][/]',
+										'constraints'=>array(
+												'page'=>'[a-zA-Z0-9_-]+'
+										),
 										'defaults'=>array(
 												'controller'=>'PaymentController',
 												'action'=>'index'
 										)
-								)
+								),
 						),
 						'adminPayment'=>array(
 								'type'=>'Zend\Mvc\Router\Http\Literal',

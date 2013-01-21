@@ -19,7 +19,6 @@ class UserHydrator extends ClassMethods
         if (!$object instanceof UserEntityInterface) {
             throw new Exception\InvalidArgumentException('$object must be an instance of User\Entity\UserInterface');
         }
-        print_r($object);
         /* @var $object UserInterface*/
         $data = parent::extract($object);
         $data = $this->mapField('id', 'user_id', $data);

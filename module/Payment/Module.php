@@ -5,6 +5,7 @@ namespace Payment;
 use WhBase\Module\AbstractModule;
 use Zend\ModuleManager\Feature\ServiceProviderInterface;
 use Zend\Stdlib\Hydrator\ClassMethods;
+use Payment\Mapper\PromoHydrator;
 
 class Module extends AbstractModule implements ServiceProviderInterface {
 	public function getDir() {
@@ -30,17 +31,19 @@ class Module extends AbstractModule implements ServiceProviderInterface {
 							$mapper->setDbAdapter($sm->get('Zend\Db\Adapter\Adapter'));
 							$entityClass = $options->getPromoEntityClass();
 							$mapper->setEntityPrototype(new $entityClass);
-							$mapper->setHydrator(new ClassMethods());
+							$mapper->setHydrator(new PromoHydrator());
 							return $mapper;
 						},
 						'promo_add_form' => function ($sm) {
 							$form = new Form\PromoAdd();
 							$form->setInputFilter(new Form\PromoInputFilter());
+							$form->setHydrator(new PromoHydrator());
 							return $form;
 						},
 						'promo_edit_form' => function ($sm) {
 							$form = new Form\PromoEdit();
 							$form->setInputFilter(new Form\PromoEditFilter());
+							$form->setHydrator(new PromoHydrator());
 							return $form;
 						} 
 				) 

@@ -39,6 +39,9 @@ class PromoBase extends ProvidesEventsForm {
 		) );
 		$this->add($currency);
 		
+		$amount = new Number('amount');
+		$this->add($amount);
+		
 		$gold = new Number('gold');
 		$this->add($gold);
 		

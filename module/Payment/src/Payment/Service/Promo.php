@@ -23,7 +23,6 @@ class Promo extends EventProvider implements ServiceManagerAwareInterface {
     	$class = $this->getOptions()->getPromoEntityClass();
     	$promo = new $class;
     	$form = $this->getAddForm();
-    	$form->setHydrator(new ClassMethods());
     	$form->bind($promo);
     	$form->setData($post);
     	if (!$form->isValid()) {
@@ -42,7 +41,6 @@ class Promo extends EventProvider implements ServiceManagerAwareInterface {
     	$class = $this->getOptions()->getPromoEntityClass();
     	$promo = new $class;
     	$form = $this->getEditForm();
-    	$form->setHydrator(new ClassMethods());
     	$form->bind($promo);
     	$form->setData($data);
     	if (!$form->isValid()) {
@@ -65,6 +63,14 @@ class Promo extends EventProvider implements ServiceManagerAwareInterface {
     
     public function all($page = 1) {
     	return $this->getPromoMapper()->getPaginator($page);
+    }
+    
+    public function findByAdapterGroupCurrency($adapter) {
+    	$entities = $this->getPromoMapper()->findByAdapter($adapter);
+    	foreach ($entities as $entity) {
+    		$groupByCurrency[$entity->getCurrency()][] = $entity; 
+    	}
+    	return $groupByCurrency;
     }
     
     /**

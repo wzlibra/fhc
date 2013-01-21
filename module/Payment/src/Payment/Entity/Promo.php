@@ -42,6 +42,25 @@ class Promo implements PromoInterface {
 	 * @var String
 	 */
 	protected $desc;
+	/**
+	 * 
+	 * @var int
+	 */
+	protected $amount;
+	
+	public function getCurrencyName() {
+		switch ($this->currency) {
+			case CurrencyEnum::QB:
+				return CurrencyEnum::QB_NAME;
+				break;
+			case CurrencyEnum::RMB:
+				return CurrencyEnum::RMB_NAME;
+				break;
+		}
+	}
+	public function getOffPercent() {
+		return $this->off/100;
+	}
 	
 	public function getId() {
 		return $this->id;
@@ -64,6 +83,7 @@ class Promo implements PromoInterface {
 		$this->currency = $currency;
 		return $this;
 	}
+	
 	public function getFormula() {
 		return $this->formula;
 	}
@@ -97,6 +117,13 @@ class Promo implements PromoInterface {
 	}
 	public function setDesc($desc) {
 		$this->desc = $desc;
+		return $this;
+	}
+	public function getAmount() {
+		return $this->amount;
+	}
+	public function setAmount($amount) {
+		$this->amount = $amount;
 		return $this;
 	}
 }

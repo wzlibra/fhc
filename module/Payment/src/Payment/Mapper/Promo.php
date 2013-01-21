@@ -34,15 +34,19 @@ class Promo extends AbstractDbMapper {
 		$this->getEventManager()->trigger('find',$this,array('entity'=>$entity));
 		return $entity;
 	}
-	
+	/**
+	 * 
+	 * @param String $adapter
+	 * @return \Zend\Db\ResultSet\HydratingResultSet
+	 */
 	public function findByAdapter($adapter)
 	{
 		$select = $this->getSelect()
 		->where(array('adapter' => $adapter));
 	
-		$entity = $this->select($select)->current();
-		$this->getEventManager()->trigger('find', $this, array('entity' => $entity));
-		return $entity;
+		$entities = $this->select($select);
+		
+		return $entities;
 	}
 	/**
 	 * (non-PHPdoc)
