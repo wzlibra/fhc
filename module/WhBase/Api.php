@@ -2,8 +2,6 @@
 namespace WhBase;
 
 use Zend\Di\Di,
-    Zend\Di\Config as DiConfig,
-    Zend\Db\Adapter\Adapter as DbAdapter,
     Zend\ServiceManager\ServiceLocatorInterface,
     Zend\ModuleManager\Exception\RuntimeException;
 

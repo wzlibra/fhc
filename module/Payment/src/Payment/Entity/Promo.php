@@ -1,7 +1,7 @@
 <?php
 namespace Payment\Entity;
 
-class Promo implements PromoInterface {
+class Promo implements PromoEntityInterface {
 	/**
 	 * 促销ID
 	 * @var id

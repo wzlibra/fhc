@@ -7,7 +7,6 @@ use Zend\Db\Adapter\Driver\ResultInterface;
 use Zend\Db\ResultSet\HydratingResultSet;
 use Zend\Db\Sql\Select;
 use Zend\Db\Sql\Sql;
-use Zend\Db\Sql\TableIdentifier;
 use Zend\Stdlib\Hydrator\HydratorInterface;
 use Zend\Stdlib\Hydrator\ClassMethods;
 use WhBase\EventManager\EventProvider;

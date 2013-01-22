@@ -3,7 +3,6 @@
 namespace Payment\Controller;
 
 use Zend\View\Model\ViewModel;
-use Zend\Stdlib\Hydrator\ClassMethods;
 use WhBase\Mvc\Controller\AbstractController;
 
 class PromoController extends AbstractController {

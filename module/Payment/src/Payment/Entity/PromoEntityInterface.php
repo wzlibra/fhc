@@ -1,7 +1,7 @@
 <?php
 namespace Payment\Entity;
 
-interface PromoInterface {
+interface PromoEntityInterface {
 	public function getId();
 	public function setId($id);
 	public function getAdapter();

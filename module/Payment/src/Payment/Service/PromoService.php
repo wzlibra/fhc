@@ -5,10 +5,8 @@ use Zend\ServiceManager\ServiceManagerAwareInterface;
 use WhBase\EventManager\EventProvider;
 use Zend\ServiceManager\ServiceManager;
 use Payment\Options\PromoOptionsInterface;
-use Zend\Stdlib\Hydrator\ClassMethods;
-use Payment\Form\PromoInputFilter;
 
-class Promo extends EventProvider implements ServiceManagerAwareInterface {
+class PromoService extends EventProvider implements ServiceManagerAwareInterface {
 	/**
 	 * @var ServiceManager
 	 */
@@ -56,13 +54,17 @@ class Promo extends EventProvider implements ServiceManagerAwareInterface {
     public function remove($id) {
     	$entity = $this->getPromoMapper()->findById($id);
     	if ($entity) {
-    		$this->getPromoMapper()->delete('id='.$id);
+    		$this->getPromoMapper()->delete("id='$id'");
     	}
     	return $entity;
     }
     
     public function all($page = 1) {
     	return $this->getPromoMapper()->getPaginator($page);
+    }
+    
+    public function findById($id) {
+    	return $this->getPromoMapper()->findById($id);
     }
     
     public function findByAdapterGroupCurrency($adapter) {

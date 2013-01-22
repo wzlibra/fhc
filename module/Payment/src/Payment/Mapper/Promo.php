@@ -1,12 +1,11 @@
 <?php
 namespace Payment\Mapper;
 
-use WhBase\Mapper\AbstractDbMapper;
 use Zend\Paginator\Adapter\DbSelect;
 use Zend\Paginator\Paginator;
-use Zend\Stdlib\Hydrator\HydratorInterface;
+use WhBase\Mapper\DbMapper;
 
-class Promo extends AbstractDbMapper {
+class Promo extends DbMapper {
 	protected $tableName  = 'payment_promo';
 	/**
 	 * 
@@ -47,29 +46,5 @@ class Promo extends AbstractDbMapper {
 		$entities = $this->select($select);
 		
 		return $entities;
-	}
-	/**
-	 * (non-PHPdoc)
-	 * @see \WhBase\Mapper\AbstractDbMapper::insert()
-	 */
-	public function insert($entity, $tableName = null, HydratorInterface $hydrator = null)
-	{
-		$result = parent::insert($entity, $tableName, $hydrator);
-        $entity->setId($result->getGeneratedValue());
-        return $result;
-	}
-	/**
-	 * (non-PHPdoc)
-	 * @see \WhBase\Mapper\AbstractDbMapper::update()
-	 */
-	public function update($entity, $where = null, $tableName = null, HydratorInterface $hydrator = null)
-	{
-		if (!$where) {
-			$where = 'id = ' . $entity->getId();
-		}
-		return parent::update($entity, $where, $tableName, $hydrator);
-	}
-	public function delete($where,$tableName=null) {
-		return parent::delete($where,$tableName);
 	}
 }

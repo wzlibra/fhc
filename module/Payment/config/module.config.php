@@ -23,9 +23,10 @@ return array(
 						'payment'=>array(
 								'type'=>'Segment',
 								'options'=>array(
-										'route'=>'/payment[/][:action][/]',
+										'route'=>'/payment[/][:action][/:id]',
 										'constraints'=>array(
-												'page'=>'[a-zA-Z0-9_-]+'
+												'page'=>'[a-zA-Z0-9_-]+',
+												'id'=>'[a-zA-Z0-9_-]+',
 										),
 										'defaults'=>array(
 												'controller'=>'PaymentController',
@@ -112,7 +113,7 @@ return array(
 								'route'=>'empty'
 						),
 						'payment'=>array(
-								'label'=>'充值',
+								'label'=>'订单列表',
 								'route'=>'adminPayment'
 						),
 						'promoHeader'=>array(

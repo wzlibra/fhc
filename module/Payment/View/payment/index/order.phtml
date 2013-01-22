@@ -1,0 +1,28 @@
+<div class="tabbable tabs-left">
+	<ul class="nav nav-tabs" style="height: 300px;">
+		<li><a href="<?php echo $this->url('payment');?>">充值信息</a></li>
+		<li><a
+			href="<?php echo $this->url('payment',array('action'=>'alipay'));?>">支付宝</a></li>
+		<li><a
+			href="<?php echo $this->url('payment',array('action'=>'yeepay'));?>">易宝支付</a></li>
+		<li class='active'><a href="#">订单信息</a></li>
+	</ul>
+	<div class="tab-content">
+		<div class="page-header">
+			<h3>订单信息</h3>
+		</div>
+		<div class="span6 well">
+		<?php
+		/* @var $order \Payment\Entity\Order */
+		$order = $this->order;
+		/* @var $promo \Payment\Entity\Promo */
+		$promo = $this->promo;
+		?>
+		
+			<h4>订单号：<?php echo $order->getId();?></h4>
+			<blockquote>
+				<p>充值：<?php echo $order->getAmount();?></p>
+			</blockquote>
+		</div>
+	</div>
+</div>

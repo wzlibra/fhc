@@ -1,0 +1,31 @@
+<div class="tabbable tabs-left">
+	<ul class="nav nav-tabs" style="height: 300px;">
+		<li><a href="<?php echo $this->url('payment');?>">充值信息</a></li>
+		<li><a
+			href="<?php echo $this->url('payment',array('action'=>'alipay'));?>">支付宝</a></li>
+		<li><a
+			href="<?php echo $this->url('payment',array('action'=>'yeepay'));?>">易宝支付</a></li>
+	</ul>
+	
+	<div class="tab-content">
+		<div class="tab-pane " id="paymentInfo">
+			<div class="page-header">
+				<h2>充值信息</h2>
+			</div>
+		</div>
+		<div class="tab-pane" id="alipay">
+			<div class="page-header">
+				<h2>支付宝</h2>
+			</div>
+		</div>
+
+		<div class="tab-pane active" id="yeepay">
+			<div class="page-header">
+				<h2>支付宝</h2>
+			</div>
+			<div class="well">
+				<h1>开发中。。。。。</h1>
+			</div>
+		</div>
+	</div>
+</div>

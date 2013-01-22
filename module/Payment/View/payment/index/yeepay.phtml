@@ -1,0 +1,127 @@
+<?php
+use Payment\Entity\CurrencyEnum;
+?>
+<div class="tabbable tabs-left">
+	<ul class="nav nav-tabs" style="height: 300px;">
+		<li><a href="<?php echo $this->url('payment');?>">充值信息</a></li>
+		<li><a
+			href="<?php echo $this->url('payment',array('action'=>'alipay'));?>">支付宝</a></li>
+		<li><a
+			href="<?php echo $this->url('payment',array('action'=>'yeepay'));?>">易宝支付</a></li>
+	</ul>
+	<div class="tab-content">
+		<div class="row-fluid">
+			<div class="span10">
+				<div class="page-header">
+					<h2>易宝支付</h2>
+				</div>
+				<div class="well row-fluid">
+					<p>选择充值方式</p>
+					<div class="btn-group" data-toggle="buttons-radio">
+						<button id="<?php echo CurrencyEnum::RMB;?>" class="btn active">银行</button>
+						<button id="<?php echo CurrencyEnum::QB;?>" class="btn">Q币</button>
+					</div>
+					<label>优惠方案</label>
+				<?php
+				foreach($this->promoGroupCurrency as $key=>$promoGroup) {
+					echo '<div id="' . $key . 'promo" class="row-fluid">';
+					foreach($promoGroup as $promo) {
+						echo '<div id="promo' . $promo->getId() . '" class="btn well youhui">';
+						echo '<label>' . $promo->getName() . '</label> <label>' . $promo->getDesc() . '</label>';
+						echo '</div>';
+					}
+					echo '</div>';
+				}
+				?>
+			</div>
+				<div class="well row-fluid">
+
+					<div class="span5">
+
+						<div class="alert alert-success" id='currentPromo'>
+							<strong>当前方案</strong>
+							<div id="currentYH"></div>
+						</div>
+				
+				<?php
+				echo $this->formElementErrors()->setMessageOpenFormat('<div class="alert alert-error"><ul><li>')->setMessageSeparatorString('</li><li>')->setMessageCloseString('</li></div>')->render($form->get('amount'))?>
+					
+				<?php
+				$form = $this->form;
+				$form->prepare();
+				$form->setAttribute('action',$this->url('payment',array(
+						'action'=>'yeepay'
+				)));
+				$form->setAttribute('method','post');
+				$form->setAttribute('class','form-horizontal');
+				$form->get('submit')->setValue('确认充值')->setAttribute('class','btn btn-success');
+				
+				echo $this->form()->openTag($form);
+				echo $this->formHidden($form->get('id'));
+				echo $this->formHidden($form->get('adapter'));
+				echo $this->formHidden($form->get('gold'));
+				echo $this->formHidden($form->get('area'));
+				echo $this->formHidden($form->get('promoId'));
+				?>
+					<div>
+							<label>充值金额</label> <label>充值：<span id="total"></span>金币
+							</label>
+							<div class="input-prepend input-append">
+								<span class="add-on">实付</span>
+						<?php echo $this->formText($form->get('amount'));?>
+						<span id="type" class="add-on"></span>
+							</div>
+					<?php echo $this->formSubmit($form->get('submit'));?>
+					</div>
+					</div>
+
+					<div class="span4">
+						<div class="alert">
+							<strong>当然！</strong> 您也可以手动输入自己想到购买的金额，我们将会用最优方式结算。
+						</div>
+					</div>
+				
+				<?php echo $this->form()->closeTag();?>
+			</div>
+			</div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+<!--				
+$(document).ready(function(){
+	$("#qbpromo").hide();
+	$("#type").html("人民币");
+	$("#currentPromo").hide();
+	$("#qb").click(function(){
+	  	$("#qbpromo").show();
+	  	$("#rmbpromo").hide();
+	  	$("#type").html("Q币");
+	});
+	$("#rmb").click(function(){
+		$("#qbpromo").hide();
+		$("#rmbpromo").show();
+		$("#type").html("人民币");
+	});
+
+	<?php
+	foreach($this->promoGroupCurrency as $key=>$promoGroup) {
+		foreach($promoGroup as $promo) {
+			echo '$("#promo' . $promo->getId() . '").click(function(){';
+			echo '$("#currentPromo").show();';
+			echo '$("#amount").val(' . ($promo->getOffPercent() * $promo->getAmount()) . ');';
+			echo '$("#type").html("' . $promo->getCurrencyName() . '");';
+			echo '$("#total").html(' . ($promo->getAmount() * $promo->getGold()) . ');';
+			echo '$("#currentYH").html("' . $promo->getName() . $promo->getDesc() . '");';
+			echo '$("#adapter").val("' . $promo->getAdapter() . '");';
+			echo '$("#gold").val(' . $promo->getAmount() * $promo->getGold() . ');';
+			echo '$("#promoId").val("' . $promo->getId() . '");';
+			echo '$("#area").val("area");';
+			echo '});';
+		}
+	}
+	?>
+	
+});
+-->
+</script>
